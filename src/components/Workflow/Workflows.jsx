@@ -22,7 +22,7 @@ const Workflows = () => {
     element.setAttribute(
       "href",
       "data:text/plain;charset=utf-8," +
-        encodeURIComponent(JSON.stringify(workflowData))
+      encodeURIComponent(JSON.stringify(workflowData))
     );
     element.setAttribute("download", `${filename}.json`);
 
@@ -42,7 +42,7 @@ const Workflows = () => {
         className={css({
           display: "flex",
           marginLeft: "300px",
-          marginTop: "80px",
+          paddingTop: "100px",
           width: "calc(100vw - 300px)",
           overflow: "auto",
           height: "100%",
@@ -61,28 +61,19 @@ const Workflows = () => {
           <AddWorkflowItem />
         </div>
       </div>
-
       <div
-        className={css({ position: "fixed", bottom: "30px", right: "30px" })}
-      >
-        <ButtonWrapper
-          disabled={!workflows.length}
-          className={css({
-            fontSize: "1.2rem",
-            fontWeight: "600",
-            ":disabled": {
-              background: "gray",
-              color: '#aaa',
-              cursor: "not-allowed",
-            },
-          })}
-          onClick={() => setShowModal(true)}
-        >
-          Download Workflow
-        </ButtonWrapper>
-      </div>
-      <div
-        className={css({ position: "fixed", bottom: "30px", left: "330px" })}
+        className={css({
+          width: "calc(100vw - 300px)",
+          position: "fixed",
+          bottom: 0,
+          display: "flex",
+          alignItems: "space-between",
+          justifyContent: "space-between",
+          left: "300px",
+          padding: "10px 30px",
+          background: "#fff",
+          boxShadow: "0px -4px 5px rgba(0, 0, 0, 0.1)",
+        })}
       >
         <ButtonWrapper
           disabled={!workflows.length}
@@ -99,6 +90,21 @@ const Workflows = () => {
           onClick={() => dispatch(clearWorkflow())}
         >
           Clear Workflow
+        </ButtonWrapper>
+        <ButtonWrapper
+          disabled={!workflows.length}
+          className={css({
+            fontSize: "1.2rem",
+            fontWeight: "600",
+            ":disabled": {
+              background: "gray",
+              color: "#aaa",
+              cursor: "not-allowed",
+            },
+          })}
+          onClick={() => setShowModal(true)}
+        >
+          Download Workflow
         </ButtonWrapper>
       </div>
       {showModal && (

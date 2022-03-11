@@ -7,6 +7,7 @@ const Header = () => {
     <header
       className={css({
         position: "fixed",
+        background: "white",
         top: 0,
         left: 0,
         width: "100vw",
